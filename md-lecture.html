@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>md-lecture.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><strong>In this lecture we will be learning Markdown language.</strong></p>
+<h1 id="1--heading">1- Heading</h1>
+<p>for this type of heading we uses &quot; # &quot; + &quot; required heading&quot;. Later we use the hashtags multiple time to reduce the size of heading.</p>
+<h2 id="heading">heading</h2>
+<p>here i use hashtag twice ## and then the required word.</p>
+<h3 id="heading">heading</h3>
+<h4 id="heading">heading</h4>
+<p>we can use hashtag &quot;#&quot; six time in a row.</p>
+<h1 id="2--line-break">2- Line break</h1>
+<p>To start markdown language, firt understand how to give line breaks. For this we have to press enter twice. Or we can use &quot; \ &quot; to add line break</p>
+<h1 id="3--block-of-words">3- Block of words</h1>
+<p>To write an special thing in markdown we use greather than sign &quot;&gt;&quot; before the text. like this &quot;&gt;This is some thing special.&quot; which will took like this</p>
+<blockquote>
+<p>This is some thing special.</p>
+</blockquote>
+<p>and to seperate this we have to press enter twice. Or if you want to write multiple lines in same block then add greater than sign in every line untill you think I am done writing this block. Here the example
+&quot; &gt;This is some thing special. What abount the second one. &quot;  now see this in block of word</p>
+<blockquote>
+<p>This is some thing special. What about the second one.</p>
+</blockquote>
+<p>this is wrong. the correct way is mentined above which look like this.</p>
+<blockquote>
+<p>This is some thing special.</p>
+<p>What about the second one.</p>
+</blockquote>
+<blockquote>
+<p>This is some thing special.</p>
+</blockquote>
+<blockquote>
+<p>What about the second one.</p>
+</blockquote>
+<h1 id="4--combing-two-things">4- Combing two things</h1>
+<p>In this we are combing headings and block of words.
+For that we are using two symbols at a time which are &quot; # , &gt; &quot;</p>
+<blockquote>
+<h2 id="headings-or-block-of-word">Headings or Block of word</h2>
+</blockquote>
+<h1 id="5--face-of-text">5- FACE of Text</h1>
+<p>in this we can make text bold, italic or blod and italic. For this we can use &quot; * or _ &quot; symbols.</p>
+<p>To make text blod you can use symbols twice. Like this ** bold** (but without space) which look like this  <strong>bold</strong> .</p>
+<p>To make text italic you can use symbols once. Like this * bold* (but without space) which look like this  <em>bold</em> .</p>
+<p>To make text blod and italic you have to use symbols three times. Like this *** bold*** (but without space) which look like this  <em><strong>bold</strong></em> .</p>
+<p>Similarly we can use _ (underscore) instead of * .</p>
+<h1 id="6--bullet-points--lists">6- Bullet Points / lists.</h1>
+<p>To create bullet point in markdown we use two symbols &quot; - or + &quot;</p>
+<ul>
+<li>Day 1</li>
+<li>Day 2</li>
+</ul>
+<p>and if you want to create a sub bullet then press tab and write</p>
+<ul>
+<li>Day 1</li>
+<li>Day 2</li>
+<li>Day 3
+<ul>
+<li>Day 3a</li>
+<li>Day 3b</li>
+</ul>
+</li>
+<li>Day 4
+<ul>
+<li>Day 4a
+<ul>
+<li>Lecture 2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>If you want to go back the press shift + tab.</p>
+<blockquote>
+<h2 id="numbering-list">Numbering list</h2>
+</blockquote>
+<p>For numbering list you can just simply write the number and heading. like this</p>
+<ol>
+<li>day1</li>
+<li>day 2</li>
+<li>Day 4</li>
+<li>Day 5
+<ol>
+<li>lecture 1</li>
+<li>lecture 2</li>
+</ol>
+</li>
+<li>Day 6</li>
+</ol>
+<h1 id="7--line-breaks--page-breaks">7- <strong>Line Breaks / Page breaks</strong></h1>
+<p>as you can see that after every heading there is a line under it. So to add such type of line in any line we can use &quot; * , - , _ &quot; these symbols three times in a row. like this *** or ___ or --- . But before putting these symbols for line there must be space in frist and second line.</p>
+<p>The first line.</p>
+<hr>
+<hr>
+<p>The second line.</p>
+<h1 id="8--links--hyper-links">8- <strong>Links / Hyper Links</strong>_</h1>
+<p>To ceate Hyper links in markdown language we use &quot; &lt;&gt; &quot; symbol. to create any hyperlink just paste the link inside the symbol. like this &lt;https://www.youtube.com/live/c-QbaMdm7Qc?si=Nco93_k1DpmEuk25 &gt;  (but without space). Which actually look like this:</p>
+<p><a href="https://www.youtube.com/live/c-QbaMdm7Qc?si=Nco93_k1DpmEuk25">https://www.youtube.com/live/c-QbaMdm7Qc?si=Nco93_k1DpmEuk25</a></p>
+<p>so by using this method you can create hyper link of any of your video etc.</p>
+<p>To create link such as click here or watch now. First write that specific word you want to be clicked, such as i am using click here, in Large Brackets &quot; [] &quot;.
+After that paste the link in small brackets without space. like this</p>
+<p>[Click here] (https://www.youtube.com/live/c-QbaMdm7Qc?si=Nco93_k1DpmEuk25)</p>
+<p>look's like this &quot;</p>
+<p><a href="https://www.youtube.com/live/c-QbaMdm7Qc?si=Nco93_k1DpmEuk25">Click here</a></p>
+<p>If you want to you same link multiple times. It is prefered to create key instead of repeating the process. To create a key we write any specific word which act as a key.
+eg:</p>
+<p><a href="https://www.youtube.com/live/c-QbaMdm7Qc?si=Nco93_k1DpmEuk25">YoutubeChannel</a> : https://www.youtube.com/live/c-QbaMdm7Qc?si=Nco93_k1DpmEuk25 (but without space)</p>
+<p>Then the next step is to write like this.(but without space and make the name remains the same )</p>
+<p>To watch complete tutorial [Click here] [ Youtube Channel ]</p>
+<p>To watch complete tutorial <a href="https://www.youtube.com/live/c-QbaMdm7Qc?si=Nco93_k1DpmEuk25">Click here.</a></p>
+<h1 id="9--images-and-figures-with-links">9- Images and Figures with Links.</h1>
+<p>There are two methods to one is to add iamge as a link and other is to display the image.
+The Link Method is same a the above but instead of video link add file  :</p>
+<p>[Image] (ispr.png) (without space)</p>
+<p><a href="ispr.png">Image</a></p>
+<p>And to display the image Add &quot; ! &quot; in start of the line.</p>
+<p>![Image] (ispr.png) (without space)</p>
+<p>In result you have this. (This image is AI generated)</p>
+<p><img src="ispr.png" alt="Image"></p>
+<p>For online Images replace file name with image URLs.</p>
+<h1 id="10--add-code--block-of-code">10- Add code / Block of code</h1>
+<p>To write a code we use ( `  ) this symbols. To write simple code use this one time at start and end. like this :</p>
+<p><code>print (&quot;Coders&quot;) </code></p>
+<p>and to write a block of code put the symbol three times in two different rows. Like this</p>
+<p>( ``` )</p>
+<p>(  ```  )</p>
+<p>Final look:</p>
+<pre class="hljs"><code><div>  x = 3
+  y = 5
+  z = x*y
+  print(z)
+
+</div></code></pre>
+<p>But if you want to copy the code later then must use block of code method.You can also
+change the colors accoding to the laguage like python,r , C++ etc .
+For that you just have to mention the name of language after the symbol in start.
+like this:</p>
+<p>``python (but with three)<br>
+x = 3<br>
+y = 5<br>
+z = x*y</p>
+<blockquote>
+<p>This one is for PYTHON Language.</p>
+</blockquote>
+<pre class="hljs"><code><div>  x = <span class="hljs-number">3</span>
+  y = <span class="hljs-number">5</span>
+  z = x*y
+  print(z)
+
+</div></code></pre>
+<blockquote>
+<p>This one is for  R language.</p>
+</blockquote>
+<pre class="hljs"><code><div>  x = <span class="hljs-number">3</span>
+  y = <span class="hljs-number">5</span>
+  z = x*y
+  print(z)
+
+</div></code></pre>
+<h1 id="11--adding-tables">11- Adding Tables</h1>
+<p>To add tables here we use ' | ' this symbol and in between the name of table.
+Then in next replecate the same amount of column but with bash only.</p>
+<p>|  NAME  |  AGE  |  GENDER|</p>
+<p>|-------- | -------- |(i did this to show you only )</p>
+<p>how actually it look like :</p>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th>AGE</th>
+<th>GENDER</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>Now after this add your data. like this  (|  Romaisa | 45 | female | )</p>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th>AGE</th>
+<th>GENDER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tahir</td>
+<td>20</td>
+<td>male</td>
+</tr>
+<tr>
+<td>Ahmed</td>
+<td>25</td>
+<td>male</td>
+</tr>
+<tr>
+<td>Sundas</td>
+<td>30</td>
+<td>female</td>
+</tr>
+<tr>
+<td>Ahad</td>
+<td>50</td>
+<td>male</td>
+</tr>
+<tr>
+<td>Romaisa</td>
+<td>45</td>
+<td>female</td>
+</tr>
+</tbody>
+</table>
+<p>the was arranged auto-matically . If you want to left align or right align the text or column just add &quot; : &quot; on left or right side repectively. like this |:-------- | --------: |</p>
+<p>And to center align add on both side like this |:-------: |</p>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th style="text-align:right">AGE</th>
+<th style="text-align:center">GENDER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tahir</td>
+<td style="text-align:right">20</td>
+<td style="text-align:center">male</td>
+</tr>
+<tr>
+<td>Ahmed</td>
+<td style="text-align:right">25</td>
+<td style="text-align:center">male</td>
+</tr>
+<tr>
+<td>Sundas</td>
+<td style="text-align:right">30</td>
+<td style="text-align:center">female</td>
+</tr>
+<tr>
+<td>Ahad</td>
+<td style="text-align:right">50</td>
+<td style="text-align:center">male</td>
+</tr>
+<tr>
+<td>Romaisa</td>
+<td style="text-align:right">45</td>
+<td style="text-align:center">female</td>
+</tr>
+</tbody>
+</table>
+<h1 id="12--table-of-content">12-  Table of Content</h1>
+<p>For this first write the topic in the large bracket [] and the after that in
+small brackets () write the refrence of heading. like this(But without space in both brackets):</p>
+<p>[heading] (#1--heading)\</p>
+<p>add \ for line break.</p>
+<p>Final look :</p>
+<p><a href="#1--heading">1. Heading</a> <br>
+<a href="#2--line-break">2. LINE BREAK</a><br>
+<a href="#3--block-of-words">3. BLOCK OF WORD/ CITATION</a><br>
+<a href="#4--combining-two-things">4. COMBINING</a><br>
+<a href="#5--face-of-text">5. TEXT</a><br>
+<a href="#6--bullet-points--lists">6. BULLET POINTS</a><br>
+<a href="#7--line-breaks--page-breaks">7. PAGE BREAK</a><br>
+<a href="#8--links--hyper-links_">8. LINKS</a><br>
+<a href="#9--images-and-figures-with-links">9. IMAGES</a><br>
+<a href="#10--add-code--block-of-code">10. BLOCK OF CODE</a><br>
+<a href="#11--adding-tables">11. TABLES</a></p>
+<h1 id="13--extention-of-markdown">13- Extention of Markdown</h1>
+<p>Download these Extention to make your you much more easier</p>
+<ol>
+<li>Markdown lint by David Anson</li>
+<li>Markdown Shortcut by mdickin</li>
+<li>Markdown all in one by yuzhang</li>
+<li>Markdown PDF.</li>
+</ol>
+
+</body>
+</html>
