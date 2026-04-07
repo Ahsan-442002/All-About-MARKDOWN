@@ -1,3 +1,14 @@
+
+<h2 style="font-family: 'poppins'; font-weight: bold; color: White;">👨‍💻Author: Ahsan Sajjad. </h2>
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=for-the-badge&logo=github)](https://github.com/Ahsan-442002) 
+[![Kaggle](https://img.shields.io/badge/Kaggle-Profile-blue?style=for-the-badge&logo=kaggle)](https://https://www.kaggle.com/ahsan442002) 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ahsan-sajjad-2a545a37a/)  
+
+
+
+
+
 __In this lecture we will be learning Markdown language.__ 
 
 # 1- Heading
