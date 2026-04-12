@@ -23,7 +23,7 @@ here i use hashtag twice ## and then the required word.
 we can use hashtag "#" six time in a row.
 
 # 2- Line break 
-To start markdown language, firt understand how to give line breaks. For this we have to press enter twice. Or we can use " \ " to add line break 
+To start markdown language, first understand how to give line breaks. For this we have to press enter twice. Or we can use " \ " to add line break 
 
 # 3- Block of words
 
